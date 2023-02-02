@@ -1,14 +1,24 @@
 import styled from "styled-components";
+import Sidebar from "../../components/sidebar/Sidebar";
 import Topbar from "../../components/topbar/Topbar";
+import Main from "../main/Main";
 
-const Container = styled.div``;
+const Container = styled.div`
+display: flex;
+margin-top: 10px;
+`;
 
 const Home = () => {
   return (
-    <Container>
+    <>
       <Topbar />
-    </Container>
-  )
-}
 
-export default Home
+      <Container>
+        <Sidebar />
+        <Main />
+      </Container>
+    </>
+  );
+};
+
+export default Home;

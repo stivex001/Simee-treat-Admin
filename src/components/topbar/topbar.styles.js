@@ -5,6 +5,9 @@ export const Container = styled.div`
   height: 100px;
   background: white;
   box-shadow: 3px 0px 20px rgba(0, 0, 0, 0.04);
+  position: sticky;
+  top: 0;
+  z-index: 999;
 `;
 export const Wrapper = styled.div`
   display: flex;
