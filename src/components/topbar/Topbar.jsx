@@ -1,32 +1,22 @@
 import { NotificationsNone } from "@mui/icons-material";
-import styled from "styled-components";
+import { Center, Container, IconBadge, IconContainer, Image, ImageContainer, Left, Logo, Right, Span, Wrapper } from "./topbar.styles";
 
-const Container = styled.div`
-
-`;
-const Wrapper = styled.div``;
-const Logo = styled.h1``;
-const Left = styled.div``;
-const Right = styled.div``;
-const Center = styled.div``;
-const Span = styled.p``;
-const IconContainer = styled.div``;
-const IconBadge = styled.span``;
-const ImageContainer = styled.div``;
-const Image = styled.img``;
 
 const Topbar = () => {
   return (
     <Container>
-        <Wrapper>
-            <Left>
-                <Logo>Simee.Treat</Logo>
-            </Left>
-            <Center>
-                <Span>Main</Span>
-            </Center>
-            <Right>
-            <IconContainer>
+      <Wrapper>
+        <Left>
+          <Logo>Simee.Treat</Logo>
+        </Left>
+        <Center>
+          <Span href="http://localhost:3001" target="_blank">
+            {" "}
+            Home
+          </Span>
+        </Center>
+        <Right>
+          <IconContainer>
             <NotificationsNone />
             <IconBadge>2</IconBadge>
           </IconContainer>
@@ -36,10 +26,10 @@ const Topbar = () => {
               alt="admin"
             />
           </ImageContainer>
-          </Right>
-        </Wrapper>
+        </Right>
+      </Wrapper>
     </Container>
-  )
-}
+  );
+};
 
-export default Topbar
+export default Topbar;
