@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  height: 100px;
+  height: 50px;
   background: white;
   box-shadow: 3px 0px 20px rgba(0, 0, 0, 0.04);
   position: sticky;
@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
+  padding: 0 20px;
 `;
 export const Logo = styled.h1`
   font-weight: bold;
@@ -42,7 +42,7 @@ export const IconContainer = styled.div`
 `;
 export const IconBadge = styled.span`
   position: absolute;
-  top: 19px;
+  top: 4px;
   right: 75px;
   background-color: orangered;
   width: 15px;

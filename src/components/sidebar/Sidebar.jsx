@@ -13,18 +13,32 @@ color: #555;
 padding: 20px;
 `;
 const Menu = styled.div`
-margin-bottom: 20px;
+margin-bottom: 10px;
 `;
 const Title = styled.h3`
 font-size: 13px;
   color: rgb(187, 186, 186);
+  margin-bottom: 10px;
 `;
 const List = styled.ul`
 list-style: none;
+padding: 5px;
+
 `;
 const ListItem = styled.li`
 display: flex;
 align-items: center;
+padding: 5px;
+cursor: pointer;
+border-radius: 10px;
+font-size: 15px;
+&:active {
+  background-color: rgb(240, 240, 255);
+}
+
+&:hover {
+  background-color: rgb(240, 240, 255);
+}
 `;
 
 const Sidebar = () => {
