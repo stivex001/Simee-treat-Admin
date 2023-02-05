@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Topbar from "../../components/topbar/Topbar";
 import Main from "../main/Main";
+import UserList from "../userlist/UserList";
 
 const Container = styled.div`
 display: flex;
@@ -16,6 +17,7 @@ const Home = () => {
       <Container>
         <Sidebar />
         <Main />
+        <UserList />
       </Container>
     </>
   );
