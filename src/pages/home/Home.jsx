@@ -1,20 +1,22 @@
 import styled from "styled-components";
-// import Topbar from "../../components/topbar/Topbar";
-import Main from "../main/Main";
+import Chart from "../../components/chart/Chart";
+import { userData } from "../../components/chart/data";
 
 const Container = styled.div`
-flex: 4;
-margin-top: 10px;
+  flex: 4;
+  margin-top: 10px;
 `;
 
 const Home = () => {
   return (
-    <>
-
-      <Container>
-        hishiuhsdhh
-      </Container>
-    </>
+    <Container>
+      <Chart
+        data={userData}
+        title="User Analytics"
+        grid
+        dataKey="Active User"
+      />
+    </Container>
   );
 };
 
