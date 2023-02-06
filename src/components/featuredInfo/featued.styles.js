@@ -4,6 +4,7 @@ export const Container = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+
 `;
 export const Wrapper = styled.div`
   flex: 1;
