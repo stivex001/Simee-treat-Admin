@@ -57,10 +57,12 @@ const Sidebar = () => {
               </ListItem>
             </Link>
 
+            <Link style={{textDecoration: "none", color: "inherit"}} to="/products">
             <ListItem>
               <Storefront style={{ marginRight: "5px", fontSize: "20px" }} />
               Products
             </ListItem>
+            </Link>
             <ListItem>
               <AttachMoney style={{ marginRight: "5px", fontSize: "20px" }} />
               Transactions

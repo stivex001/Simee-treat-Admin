@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { DataGrid } from "@mui/x-data-grid";
 import { DeleteOutline } from "@mui/icons-material";
-import { productRows } from "../../../components/AdminDashboard/chart/data";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { productRows } from "../../components/chart/data";
 
 const Container = styled.div`
   flex: 4;
@@ -75,7 +75,7 @@ const ProductList = () => {
           width: 150,
           renderCell: (params) => (
             <>
-              <Link to={"/admin/product/" + params.row.id}>
+              <Link to={"/product/" + params.row.id}>
                 <Button>ProductListEdit</Button>
                 </Link>
                 <DeleteOutline
