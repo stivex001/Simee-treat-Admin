@@ -16,25 +16,30 @@ const Container = styled.div`
 `;
 
 const App = () => {
+
+  const admin = JSON.parse(JSON.parse(localStorage.getItem('persist:root')).user).currentUser.isAdmin
+
   return (
     <div>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-      </Routes>
+      {/* <Login /> */}
+        
+        { admin && (<>
+          <Topbar />
+          <Container>
+            <Sidebar />
+            <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/users" element={<UserList />} />
+            <Route path="/user/:Id" element={<User />} />
+            <Route path="/newuser" element={<NewUser />} />
+            <Route path="/products" element={<ProductList />} />
+            <Route path="/product/:productId" element={<Product />} />
+            <Route path="/newproduct" element={<NewProduct />} />
+            {/* <Route path="/login" element={<Login />} /> */}
+            </Routes>
+          </Container>
+        </>)}
       
-      <Topbar />
-      <Container>
-        <Sidebar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/users" element={<UserList />} />
-          <Route path="/user/:Id" element={<User />} />
-          <Route path="/newuser" element={<NewUser />} />
-          <Route path="/products" element={<ProductList />} />
-          <Route path="/product/:productId" element={<Product />} />
-          <Route path="/newproduct" element={<NewProduct />} />
-        </Routes>
-      </Container>
     </div>
   );
 };
