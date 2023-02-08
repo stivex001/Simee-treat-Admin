@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { format } from "timeago.js";
 import { userRequest } from "../../requestMethods";
 
 const Container = styled.div`
@@ -72,7 +73,7 @@ const Widgetlg = () => {
             <Td>
               <Username>{order.userId}</Username>
             </Td>
-            <Date>{order.createdAt}</Date>
+            <Date>{format(order.createdAt)}</Date>
             <Amount>#{order.amount}</Amount>
             <Status>
               <WidgetButton color="#e5faf2" textColor="#3bb077">
