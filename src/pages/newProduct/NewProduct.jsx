@@ -1,66 +1,44 @@
-import styled from "styled-components";
+import { useState } from "react"
+import { Button, Container, Form, FormItems, Input, Label, Option, Select, Title } from "./newProduct.styles"
 
-const Container = styled.div`
-  flex: 4;
-`;
-const Title = styled.h1``;
-const Form = styled.form`
-  margin-top: 10px;
-`;
-const FormItems = styled.div`
-  width: 250px;
-  display: flex;
-  flex-direction: column;
-  margin-top: 10px;
-`;
-const Label = styled.label`
-  margin-bottom: 10px;
-  font-weight: 600;
-  color: gray;
-`;
-const Input = styled.input`
-  padding: 10px;
-  border: 1px solid gray;
-  border-radius: 5px;
-`;
-const Select = styled.select`
-  height: 40px;
-  border-radius: 5px;
-`;
-const Option = styled.option``;
-const Button = styled.button`
-  border: none;
-  background-color: darkblue;
-  color: white;
-  padding: 7px 10px;
-  font-weight: 600;
-  border-radius: 10px;
-  margin-top: 10px;
-  cursor: pointer;
-`;
 
 const NewProduct = () => {
+const [inputs, setInputs] = useState({})
+const [file, setFile] = useState(null)
+const [cat, setCat] = useState([])
+
+const handleChange = (e) => {}
+const handleCat = (e) => {}
+
   return (
     <Container>
       <Title>New Product</Title>
       <Form>
         <FormItems>
           <Label>Image</Label>
-          <Input type="file" id="file" />
+          <Input type="file" id="file" onChange={e=>setFile(e.target.files)[0]}/>
         </FormItems>
         <FormItems>
-          <Label>Name</Label>
-          <Input type="text" placeholder="Cake" />
+          <Label>Title</Label>
+          <Input type="text" placeholder="Cake" onChange={handleChange} />
+        </FormItems>
+        <FormItems>
+          <Label>Description</Label>
+          <Input type="text" placeholder="description...." onChange={handleChange}/>
+        </FormItems>
+        <FormItems>
+          <Label>Price</Label>
+          <Input type="text" placeholder="#500" onChange={handleChange}/>
+        </FormItems>
+        <FormItems>
+          <Label>Categories</Label>
+          <Input type="text" placeholder="cupcakes, meatpie, snacks..." onChange={handleCat}/>
         </FormItems>
         <FormItems>
           <Label>Stock</Label>
-          <Input type="text" placeholder="123" />
-        </FormItems>
-        <FormItems>
-          <Label>Active</Label>
-          <Select name="active" id="active">
-            <Option value="yes">Yes</Option>
-            <Option value="no">No</Option>
+          <Select>
+            <Option value='true'>Yes</Option>
+            <Option value='false'>No</Option>
           </Select>
         </FormItems>
         <Button>Create</Button>

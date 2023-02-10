@@ -49,7 +49,7 @@ const productSlice = createSlice({
     state.isFetching = false;
     state.products[
       state.products.findIndex((item) => item._id === action.payload)
-    ] = action.payload.user;
+    ] = action.payload.product;
   },
   updateProductFailure: (state) => {
     state.isFetching = false;

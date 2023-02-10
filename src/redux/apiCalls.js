@@ -1,6 +1,6 @@
 
 import { publicRequest, userRequest } from "../requestMethods"
-import { deleteProductFailure, deleteProductStart, deleteProductSuccess, getProductFailure, getProductStart, getProductSuccess } from "./productSlice"
+import { addProductFailure, addProductStart, addProductSuccess, deleteProductFailure, deleteProductStart, deleteProductSuccess, getProductFailure, getProductStart, getProductSuccess, updateProductFailure, updateProductStart, updateProductSuccess } from "./productSlice"
 import { loginfailure, loginStart, loginSuccess } from "./userSlice"
 
 
@@ -32,5 +32,25 @@ export const deleteProduct = async (id, dispatch) => {
         dispatch(deleteProductSuccess(res.data))
     } catch (error) {
         dispatch(deleteProductFailure())
+    }
+}
+
+export const updateProduct = async (id, product, dispatch) => {
+    dispatch(updateProductStart())
+    try {
+        // const res = await userRequest.delete(`/product/${id}`)
+        dispatch(updateProductSuccess({id, product}))
+    } catch (error) {
+        dispatch(updateProductFailure())
+    }
+}
+
+export const addProduct = async (product, dispatch) => {
+    dispatch(addProductStart())
+    try {
+        const res = await userRequest.post(`/product`, {product})
+        dispatch(addProductSuccess(res.data))
+    } catch (error) {
+        dispatch(addProductFailure())
     }
 }
