@@ -4,7 +4,7 @@ import { DeleteOutline } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { productRows } from "../../components/chart/data";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../redux/apiCalls";
 
 const Container = styled.div`
@@ -34,6 +34,7 @@ const Button = styled.button`
 const ProductList = () => {
     const [data, setData] = useState(productRows)
     const dispatch = useDispatch()
+    const products = useSelector(state => state.product.products)
 
     useEffect(() => {
         getProducts(dispatch)
@@ -45,36 +46,31 @@ const ProductList = () => {
       };
 
       const columns = [
-        { field: "id", headerName: "ID", width: 90 },
+        { field: "_id", headerName: "ID", width: 220 },
         {
           field: "product",
           headerName: "Product",
-          width: 150,
+          width: 200,
           editable: true,
           renderCell: (params) => {
             return (
               <Products>
-                <Image src={params.row.img} alt="products" />
-                {params.row.name}
+                <Image src={params.row.img} alt={params.row.title} />
+                {params.row.title}
               </Products>
             );
           },
         },
         {
-          field: "stock",
+          field: "inStock",
           headerName: "Stock",
-          width: 150,
+          width: 100,
           editable: true,
         },
-        {
-          field: "status",
-          headerName: "Status",
-          width: 110,
-          editable: true,
-        },
+        
         {
           field: "price",
-          headerName: "Price",
+          headerName: "Price (#)",
           width: 160,
         },
         {
@@ -99,8 +95,9 @@ const ProductList = () => {
   return (
     <Container>
       <DataGrid
-        rows={data}
+        rows={products}
         columns={columns}
+        getRowId={(row) => row._id}
         pageSize={8}
         rowsPerPageOptions={[8]}
         checkboxSelection
