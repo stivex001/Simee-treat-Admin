@@ -2,8 +2,10 @@ import styled from "styled-components";
 import { DataGrid } from "@mui/x-data-grid";
 import { DeleteOutline } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { productRows } from "../../components/chart/data";
+import { useDispatch } from "react-redux";
+import { getProducts } from "../../redux/apiCalls";
 
 const Container = styled.div`
   flex: 4;
@@ -31,6 +33,12 @@ const Button = styled.button`
 
 const ProductList = () => {
     const [data, setData] = useState(productRows)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        getProducts(dispatch)
+    }, [dispatch])
+  
 
     const handleDelete = (id) => {
         setData(data.filter((item) => item.id !== id));
