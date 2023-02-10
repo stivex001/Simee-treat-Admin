@@ -1,5 +1,6 @@
 import { Publish } from "@mui/icons-material";
-import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Link, useLocation } from "react-router-dom";
 import Chart from "../../components/chart/Chart";
 import { productData } from "../../components/chart/data";
 import {
@@ -33,6 +34,11 @@ import {
 } from "./product.styles";
 
 const Product = () => {
+  const location = useLocation()
+  const productId = location.pathname.split('/')[2];
+
+  const product = useSelector(state => state.product.products.find(product => product._id === productId))
+
   return (
     <Container>
       <TitleContainer>
@@ -48,25 +54,21 @@ const Product = () => {
         </Left>
         <Right>
           <InfoTop>
-            <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Pound_layer_cake.jpg/220px-Pound_layer_cake.jpg" />
-            <Name>Cakes</Name>
+            <Image src={product.img} />
+            <Name>{product.title}</Name>
           </InfoTop>
           <InfoBottom>
             <InfoItem>
               <Key>id:</Key>
-              <Value>123</Value>
+              <Value>{product._id}</Value>
             </InfoItem>
             <InfoItem>
               <Key>sales:</Key>
               <Value>123</Value>
             </InfoItem>
             <InfoItem>
-              <Key>active:</Key>
-              <Value>yes</Value>
-            </InfoItem>
-            <InfoItem>
               <Key>in stock:</Key>
-              <Value>no</Value>
+              <Value>{product.inStock}</Value>
             </InfoItem>
           </InfoBottom>
         </Right>
@@ -75,22 +77,21 @@ const Product = () => {
         <Form>
           <FormLeft>
             <LeftLabel>Product Name</LeftLabel>
-            <LeftInput placeholder="cake" />
+            <LeftInput placeholder={product.title} />
+            <LeftLabel>Product Description</LeftLabel>
+            <LeftInput placeholder={product.desc} />
+            <LeftLabel>Price</LeftLabel>
+            <LeftInput placeholder={product.price} />
             <LeftLabel>In Stock</LeftLabel>
             <Select name="inStock" id="idStock">
-              <Option value="yes">Yes</Option>
-              <Option value="no">No</Option>
-            </Select>
-            <LeftLabel>Active</LeftLabel>
-            <Select name="active" id="active">
-              <Option value="yes">Yes</Option>
-              <Option value="no">No</Option>
+              <Option value="true">Yes</Option>
+              <Option value="false">No</Option>
             </Select>
           </FormLeft>
           <FormRight>
             <Upload>
-              <UploadImg src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Pound_layer_cake.jpg/220px-Pound_layer_cake.jpg" />
-              <FileLabel for="file">
+              <UploadImg src={product.img} alt={product.title}/>
+              <FileLabel htmlFor="file">
                 <Publish style={{ cursor: "pointer" }} />
               </FileLabel>
               <FileInput type="file" id="file" style={{ display: "none" }} />
