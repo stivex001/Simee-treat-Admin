@@ -1,34 +1,13 @@
-import styled from "styled-components";
+
 import { DataGrid } from "@mui/x-data-grid";
 import { DeleteOutline } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteProduct, getProducts } from "../../redux/apiCalls";
+import { Button, Container, Image, Products } from "./productList.styles";
 
-const Container = styled.div`
-  flex: 4;
-`;
-const Products = styled.div`
-  display: flex;
-  align-items: center;
-`;
-const Image = styled.img`
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-right: 10px;
-`;
-const Button = styled.button`
-  border: none;
-  border-radius: 10px;
-  padding: 5px 10px;
-  background-color: #3bb077;
-  color: white;
-  cursor: pointer;
-  margin-right: 20px;
-`;
+
 
 const ProductList = () => {
     const dispatch = useDispatch()
